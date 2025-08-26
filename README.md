@@ -44,8 +44,4 @@ python firewall.py --enforce -v
 Edit `rules.yaml`. Precedence: any **block** match wins. If any allow lists
 are non-empty, the default policy is **deny** (block) unless an allow list matches.
 
-## Notes
-- This is for learning/demo purposes, not a production firewall.
-- Removing OS-level rules:
-  - Windows: remove in *Windows Defender Firewall with Advanced Security* or via `netsh advfirewall firewall delete rule name=PyFirewallBlock_*`
-  - Linux: `iptables -L --line-numbers` then `iptables -D ...` to delete.
+
