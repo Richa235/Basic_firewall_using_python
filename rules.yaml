@@ -1,0 +1,18 @@
+# -------- PyFirewall rules (edit to suit your needs) --------
+# Default policy is "deny" (block) unless a packet matches any "allow" list.
+# If a packet matches any "block" list, it is blocked immediately.
+# You can list single IPs (e.g. 203.0.113.5) or CIDRs (e.g. 10.0.0.0/8).
+
+mode: monitor     # monitor | enforce   (monitor = do not change OS firewall)
+interfaces: []    # [] tries to sniff on all up interfaces; or list like ["Ethernet", "Wi-Fi"]
+log_file: logs/firewall.log
+
+rules:
+  block:
+    ips: ["203.0.113.5"]    # example: block a hostile IP
+    ports: [23, 445]        # example: block Telnet, SMB
+    protocols: ["ICMP"]     # example: block pings
+  allow:
+    ips: ["192.168.0.0/16"] # example: allow your LAN
+    ports: [80, 443]        # example: allow web
+    protocols: ["TCP", "UDP"]
